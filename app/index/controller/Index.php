@@ -10,7 +10,7 @@ class Index extends Controller
     public function index()
     {
        
-
+        echo config('SYS.UP_MAX_SIZE');
         return $this->fetch();
     }
 

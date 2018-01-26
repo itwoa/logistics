@@ -9,6 +9,56 @@
 // | Author: Benny <695771215@qq.com>
 // +----------------------------------------------------------------------
 
+
+/**
+	 * [ajaxUploadFile 上传文件]
+	 * @param  [type] $folder   [文件夹名称]
+	 * @param  [type] $filename [文件名，file的name]
+	 * 
+	 */
+function ajaxUploadFile($folder,$filename){
+	header('Content-Type:application/json; charset=utf-8');
+	//初始化数据
+	$suffix = strtolower(pathinfo($_FILES[$filename]['name'],PATHINFO_EXTENSION));//文件后缀
+	$allowType = array('png','jpg','gif','jpeg','pjpeg','doc','docx','xls','xlsx');//允许的上传类型
+	$maxsize = 2000000;//最大上传值 2*1024*1024 = 2M
+	$filesize = $_FILES[$filename]['size']; //获取上传文件的大小
+	$filetype = $_FILES[$filename]['type'];
+
+	if($filesize > $maxsize){
+
+		$data = array("status" => 4,'msg'=>'上传文件超出限制！');
+		exit(json_encode($data));
+		return false;
+	}
+
+	if(!in_array($suffix, $allowType)){
+		$data = array("status" => 3,'msg'=>'上传类型不允许！');
+		exit(json_encode($data));
+		return false;
+	}
+
+	$suffix = explode(".",$_FILES[$filename]['name']);
+	$new_filename = date('YmdHis').rand(1000,9999).'.'.$suffix[1];
+	$Upload_dir = "Upload/" .$folder."/".date("Ymd")."/";
+	if(!file_exists($Upload_dir))mkdir($Upload_dir,0777);
+
+	if(move_uploaded_file($_FILES[$filename]["tmp_name"],$Upload_dir.$new_filename)){
+		//返回数据
+		$data = array(
+			"status" => 1,
+			"imgurl" => $Upload_dir.$new_filename,
+			'size' => $filesize
+		);
+		exit(json_encode($data));
+	}else{
+
+		$data = array("status" => 2,'msg'=>"上传失败");	//上传失败
+		exit(json_encode($data));
+	}
+
+}
+
 /*
  * 字符串截取，支持中文和其他编码
  *
@@ -20,7 +70,25 @@
  * @return string
  *
  */
+function substrExt($str, $start=0, $length,$suffix="",$charset="utf-8"){
 
+	if(function_exists("mb_substr")){
+		 return mb_substr($str, $start, $length, $charset).$suffix;
+	}
+	elseif(function_exists('iconv_substr')){
+		 return iconv_substr($str,$start,$length,$charset).$suffix;
+	}
+
+	$re['utf-8']  = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
+	$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
+	$re['gbk']    = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
+	$re['big5']   = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
+
+	preg_match_all($re[$charset], $str, $match);
+	$slice = join("",array_slice($match[0], $start, $length));
+	return $slice.$suffix;
+
+}
 
 /**
  * 传递一个父级分类ID返回所有子级分类
@@ -141,26 +209,6 @@ function randomStr($length = 10) {
 	}
 	return $randomString;
  }
-
-function substrExt($str, $start=0, $length,$suffix="",$charset="utf-8"){
-
-	if(function_exists("mb_substr")){
-		 return mb_substr($str, $start, $length, $charset).$suffix;
-	}
-	elseif(function_exists('iconv_substr')){
-		 return iconv_substr($str,$start,$length,$charset).$suffix;
-	}
-
-	$re['utf-8']  = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-	$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-	$re['gbk']    = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-	$re['big5']   = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-
-	preg_match_all($re[$charset], $str, $match);
-	$slice = join("",array_slice($match[0], $start, $length));
-	return $slice.$suffix;
-
-}
 
 /**
  * 无限极分类

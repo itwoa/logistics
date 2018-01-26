@@ -13,6 +13,7 @@ return [
         'CSS'=>'/static/css',
         'IMG'=>'/static/images'
       ],
+     
   ]
 
 ]

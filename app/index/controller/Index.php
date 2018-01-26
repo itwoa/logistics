@@ -1,48 +1,78 @@
 <?php
 namespace app\index\controller;
-/*默认控制器*/
+use think\Controller;
+use think\Db;
+use think\Request;
+use think\Config;
 
-class Index
+class Index extends Controller
 {
-    
-    public function index(){
-        
-        return view('index');
+    public function index()
+    {
+       
+
+        return $this->fetch();
     }
 
-    //登录提交
-    public function login(){
+    //登录
+    public function login()
+    {
+        if (Request::instance()->isPost()) {
 
-    	$data = request()->param();
-    	$pwerror = session('pwerror')?:0;
-    	if(empty($data['username']) || empty($data['password'])){
-    		$this->error('用户名密码不能为空！');
-    	}
+            $account = input('username', 0, 'trim');
+            $password = input('password', 0, 'trim');
+            //验证码
+            $verify_code = input('passcode', '0', 'trim');
+            $type = input('type');
 
-    	if(isset($data['checkcode']) && !captcha_check($data['checkcode'])) {
-            $this->error('验证码不正确！');
+            //验证验证码是否正确
+            if(!captcha_check($verify_code)) {
+                $data = [
+                    'status' => 0,
+                    'msg' => '验证码错误！',
+                    'target' => 2
+                ];
+                exit(json_encode($data));
+            }
+
+            //验证用户名和密码
+            $user = db('admin')->where("username = '".$account."'")->find();
+            if(!$user || $user['pwd'] != md5($password)){
+                $data = [
+                    'status' => 0,
+                    'msg' => '用户名或密码错误！',
+                    'target' => 2
+                ];
+                exit(json_encode($data));
+            }else{
+                db('admin')->where('id', $user['id'])->update(['login_time' => time()]);
+                //缓存登录数据
+                session('nick', $user['nick']);
+                session('adminid', $user['id']);
+                session('username',$user['username']);
+                session('lasttime', time());
+                session('logintime',date("Y-m-d H:i",$user['login_time']));
+                $data = [
+                    'status' => 1,
+                    'url' => '/home/'
+                ];
+                exit(json_encode($data));
+            }
+
+
         }
 
-        $user = db('admin')->where("username = '".$data['username']."'")->find();
+    }
 
-        if(!$user){
-        	$this->error('用户名不存在！');
-        }
+    /**
+     * 退出登录
+     */
+    public function logout()
+    {
 
-        if(md5($data['password']) != $user['pwd']){
-        	$pwerror ++;
-        	session('pwerror',$pwerror);
-        	$this->error('密码输入错误！');
-
-        }
-
-        session('username',$user['username']);
-        session('logintime',$user['logintime']);
-        session('nickname',$user['nickname']);
-        session('pwerror',0);
-        //写入登录时间
-        db('admin')->where('id = '.$user['id'])->setField('logintime',time());
-        $this->success('登录成功！',url('Index/home'));
+        session(null);
+        session_destroy();
+        $this->success('', '/adms', '', 0);
 
     }
 }

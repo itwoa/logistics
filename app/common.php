@@ -36,7 +36,7 @@ function getChilds($user,$pid){
 	}
 	return $arr;
 }
-	
+
 /**
  * 二维数组冒泡排序法
  *  $arr 要排序的数组
@@ -133,7 +133,7 @@ function clearFile($dir) {
  *
  */
 
-public function randomStr($length = 10) {
+function randomStr($length = 10) {
 	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$randomString = '';
 	for ($i = 0; $i < $length; $i++) {
@@ -142,7 +142,7 @@ public function randomStr($length = 10) {
 	return $randomString;
  }
 
-public function substrExt($str, $start=0, $length,$suffix="",$charset="utf-8"){
+function substrExt($str, $start=0, $length,$suffix="",$charset="utf-8"){
 
 	if(function_exists("mb_substr")){
 		 return mb_substr($str, $start, $length, $charset).$suffix;

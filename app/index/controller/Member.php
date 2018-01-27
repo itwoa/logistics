@@ -7,11 +7,17 @@ use think\Config;
 /*用户管理员*/
 class Member extends Common
 {
-    public function index()
-    {
+	//管理员首页
+    public function index(){
         
         $this->assign('title','管理员');
         return view();
+    }
+
+    //添加管理员
+    public function add(){
+
+    	return view();
     }
 
    

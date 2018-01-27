@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>管理员</title>
-</head>
-<body>
-	公告列表
-</body>
-</html>
+{layout name="layout" /}
+<div class="crumbs">
+当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('goods/index')}">系统公告</a>
+</div>
+<div class="content">
+	<div class="button">
+		<a href="{:url('addNotice')}" class="add"> + 发布公告</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th class="wd50">序号</th>
+				<th class="wd300">标题</th>
+				<th>发布账号</th>
+				<th class="wd150">发布时间时间</th>
+				<th class="wd150">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td class="link"><a href="{:url('content')}">测试公告</a></td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+
+</div>
+

@@ -13,5 +13,9 @@ class Goods extends Common
         return view();
     }
 
-   
+   	//添加物品
+   	public function addGoods(){
+
+   		return view();
+   	}
 }

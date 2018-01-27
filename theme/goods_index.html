@@ -1,10 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>管理员</title>
-</head>
-<body>
-	goods列表
-</body>
-</html>
+{layout name="layout" /}
+<div class="crumbs">
+当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('goods/index')}">物品管理</a>
+</div>
+<div class="content">
+	<div class="button">
+		<a href="{:url('addGoods')}" class="add"> + 添加物品</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th class="wd50">序号</th>
+				<th class="wd200">物品类型</th>
+				<th class="wd200">物品名称</th>
+				<th>添加账号</th>
+				<th class="wd150">添加时间</th>
+				<th class="wd300">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>办公用品</td>
+				<td></td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="{:url('addChild')}" class="pass">+添加子类</a>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>&nbsp;&nbsp;├─ 文件夹</td>
+				<td>文件袋</td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="{:url('addChild')}" class="pass">+添加子类</a>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>&nbsp;&nbsp;└─ 电脑</td>
+				<td>Lenovo Y430</td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="{:url('addChild')}" class="pass">+添加子类</a>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>机械器材</td>
+				<td></td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="{:url('addChild')}" class="pass">+添加子类</a>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>&nbsp;&nbsp;└─ 摄像机</td>
+				<td>SONY KD-55X</td>
+				<td>admin</td>
+				<td>2018-01-27 15:52</td>
+				<td>
+					<a href="{:url('addChild')}" class="pass">+添加子类</a>
+					<a href="" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+
+</div>
+

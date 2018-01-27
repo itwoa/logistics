@@ -10,6 +10,7 @@ class Member extends Common
     public function index()
     {
         
+        $this->assign('title','管理员');
         return view();
     }
 

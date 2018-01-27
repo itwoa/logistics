@@ -1,3 +1,8 @@
+$(window).on('load', function () {
+	var height = $(window).outerHeight()-$(".header").height()-40;
+	$("#iframe").css('height',height);
+	console.log($(window).outerHeight());
+})
 /*左侧导航点击*/
 $(".left_nav a").on("click", function () {
     $(".left_nav a").removeClass('current');

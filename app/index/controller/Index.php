@@ -72,7 +72,7 @@ class Index extends Controller
 
         session(null);
         session_destroy();
-        $this->success('', '/adms', '', 0);
+        $this->success('', '/', '', 0);
 
     }
 }

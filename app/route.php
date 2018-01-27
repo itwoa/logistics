@@ -1,4 +1,5 @@
 <?php
+use think\Route;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -9,13 +10,15 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
+// return [
+//     '__pattern__' => [
+//         'name' => '\w+',
+//     ],
+//     '[hello]'     => [
+//         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
+//         ':name' => ['index/hello', ['method' => 'post']],
+//     ],
 
-];
+// ];
+
+Route::rule('home','Index/home/index');

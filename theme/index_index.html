@@ -6,8 +6,6 @@
     <title>测试</title>
     <link rel="stylesheet" href="__CSS__/base.min.css">
     <link rel="stylesheet" href="__CSS__/login.css">
-    <script src="__JS__/lib/jquery.min.js" type="text/javascript"></script>
-    <script src="__JS__/lib/layer/layer.js" type="text/javascript"></script>
     <style>
         .registerType {
             font-size: 18px;
@@ -24,7 +22,7 @@
                 账号登录
                 </div>
 
-                <div class="reset-pwd" id="login-box" name="login-box">
+                <form class="reset-pwd" id="login-box" name="login-box" validation>
                     <ul><li>
                         <p class="waring_username dn">
                             <i class="fa-times-circle"></i>
@@ -45,35 +43,27 @@
                             <span class="img-code"><img id="code" alt="验证码" title="点击切换验证码" src="/captcha.html?d=0.43058874407838355" class="m"></span>
                         </li>
                         <li>
-                            <button type="button" class="btn-cheng" id="sure_login" target="/logins/.html" form="login-box" method="post">立即登录</button>
+                            <button type="button" class="btn-cheng" id="sure_login" ajaxReturn target="{:url('login')}" method="post">立即登录</button>
                         </li>
                     </ul>
-                </div>
+                </form>
             </div>
     </div>
+    <script src="__JS__/lib/jquery.min.js" type="text/javascript"></script>
+    <script src="__JS__/lib/layer/layer.js" type="text/javascript"></script>
+    <script src="__JS__/base.js" type="text/javascript"></script>
+    <script src="__JS__/lib/validater.min.js" type="text/javascript"></script>
+    <script src="__JS__/lib/ajaxReturn.min.js" type="text/javascript"></script>
     <script>
     $(function() {
         $('#code').on('click',function(){
                 $(this).attr('src','/captcha.html?d='+Math.random());
         });
-        // layer.confirm('您是如何看待前端开发？', {
-        //     btn: ['重要', '奇葩'] //按钮
-        // }, function() {
-        //     layer.msg('的确很重要', {
-        //         icon: 1
-        //     });
-        // }, function() {
-        //     layer.msg('也可以这样', {
-        //         time: 20000, //20s后自动关闭
-        //         btn: ['明白了', '知道了']
-        //     });
-        // });
-        $(".test").on('click', function() {
-            layer.load();
-            //layer.alert('测试');
-        })
-
-        //layer.load();
+        //回车登录
+        $("body").on('keyup',function(e) {
+            e.keyCode === 13 && $("#sure_login").click();
+        });
+        
     })
     </script>
 </body>

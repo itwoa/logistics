@@ -14,63 +14,33 @@
 				<th>姓名</th>
 				<th class="wd200">账号级别</th>
 				<th>属性</th>
+				<th>状态</th>
 				<th class="wd150">上次登录时间</th>
 				<th class="wd200">操作</th>
 			</tr>
 		</thead>
 		<tbody>
+			{volist name="list" id="vo" key="k"}
 			<tr>
-				<td>1</td>
-				<td>admin</td>
-				<td>张三</td>
-				<td>总管理员</td>
-				<td>警官</td>
-				<td>2018-01-27 15:52</td>
+				<td>{$k}</td>
+				<td>{$vo.username}</td>
+				<td>{$vo.nick}</td>
+				<td>{$vo.acc_type|trance_str=config('sys.admin_name'),###}</td>
+				<td>{$vo.acc_attr|trance_str=config('sys.admin_attri'),###}</td>
+				<td>{$vo.state?'正常':'锁定'}</td>
+				<td>{if condition="$vo['login_time'] neq ''"}{$vo.login_time|date="Y-m-d H:i",###}{else /}--{/if}</td>
 				<td>
 					<a href="" class="edit">编辑</a>
-					<a href="" class="unclick">删除</a>
+					<a {if condition="$vo['id'] eq 1"}class="unclick"{else /}href="" class="del"{/if}>删除</a>
 				</td>
 			</tr>
-			<tr>
-				<td>2</td>
-				<td>lisi</td>
-				<td>李四</td>
-				<td>管理员</td>
-				<td>警官</td>
-				<td>2018-01-27 15:52</td>
-				<td>
-					<a href="" class="edit">编辑</a>
-					<a href="" class="del">删除</a>
-				</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>wangwu</td>
-				<td>王五</td>
-				<td>管理员</td>
-				<td>警官</td>
-				<td>2018-01-27 15:52</td>
-				<td>
-					<a href="" class="edit">编辑</a>
-					<a href="" class="del">删除</a>
-				</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>zhaoliu</td>
-				<td>赵六</td>
-				<td>普通账号</td>
-				<td>义工</td>
-				<td>2018-01-27 15:52</td>
-				<td>
-					<a href="" class="edit">编辑</a>
-					<a href="" class="del">删除</a>
-				</td>
-			</tr>
+			{/volist}
 			
 		</tbody>
 	</table>
-
+	<div class="page">
+		{$page}
+	</div>
 
 </div>
 

@@ -13,6 +13,12 @@ return [
         'CSS'=>'/static/css',
         'IMG'=>'/static/images'
       ],
+      'token'     => [
+        'token_on'    => true,
+        'token_name'  => '__hash__',
+        'token_type'  => 'md5',
+        'token_reset' => true,
+      ]
      
   ]
 

@@ -14,6 +14,10 @@ return [
 	//最大上传文件  2*1024*1024 = 2M
     'up_max_size' 	=> 	2000000,
     //允许的上传类型
-    'up_file_type'	=>	['png','jpg','gif','jpeg','pjpeg','doc','docx','xls','xlsx']
+    'up_file_type'	=>	['png','jpg','gif','jpeg','pjpeg','doc','docx','xls','xlsx'],
+    //管理员类型
+    'admin_name'    =>  ['总管理员','管理员','普通账号'],
+    //账号属性
+    'admin_attri'   =>  ['警官','协工','其他']
 
 ];

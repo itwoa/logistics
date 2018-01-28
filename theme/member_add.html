@@ -2,3 +2,40 @@
 <div class="crumbs">
 当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('member/index')}">管理员</a>  • <span >添加管理员</span>
 </div>
+<div class="form">
+	<form action="{:url('creat')}" method="post">
+		
+	<div class="form_item">
+		<span>账号</span>
+		<input type="text" name="username" class="input">
+	</div>
+	<div class="form_item">
+		<span>姓名</span>
+		<input type="text" name="nick" class="input">
+	</div>
+	<div class="form_item">
+		<span>登录密码</span>
+		<input type="password" name="pwd" class="input">
+	</div>
+	<div class="form_item">
+		<span>确认密码</span>
+		<input type="password" name="sure_pwd" class="input">
+	</div>
+	<div class="form_item">
+		<span>账号类型</span>
+		<select name="acc_type" id="acc_type" class="select">
+			<option value="1">管理员</option>
+		</select>
+	</div>
+	<div class="form_item">
+		<span>职位属性</span>
+		<select name="acc_attr" id="acc_attr" class="select">
+			<option value="1">警官</option>
+			<option value="2">义工</option>
+			<option value="3">其他</option>
+		</select>
+	</div>
+	{:token('__token__', 'sha1')}
+	<button class="button"> 提 交</button>
+	</form>
+</div>

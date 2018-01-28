@@ -27,6 +27,15 @@ function p($data){
     $str.='</pre>';
     echo $str;
 }
+
+/**
+ *  通过数组索引返回数组值
+ */
+
+function trance_str($array,$value){
+	
+	return $array[$value];
+}
 /**
 	 * [ajaxUploadFile 上传文件]
 	 * @param  [type] $folder   [文件夹名称]

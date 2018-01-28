@@ -30,7 +30,7 @@
 				<td>{$vo.state?'正常':'锁定'}</td>
 				<td>{if condition="$vo['login_time'] neq ''"}{$vo.login_time|date="Y-m-d H:i",###}{else /}--{/if}</td>
 				<td>
-					<a href="" class="edit">编辑</a>
+					<a href="{:url('edit',array('id'=>$vo['id']))}" class="edit">编辑</a>
 					<a {if condition="$vo['id'] eq 1"}class="unclick"{else /}href="" class="del"{/if}>删除</a>
 				</td>
 			</tr>

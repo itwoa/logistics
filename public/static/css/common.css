@@ -1,18 +1,24 @@
-.main_box{width: 1000px;margin: 0 auto;}
+body{font-family: 'microsoft yehei'}
+.main_box{width: 1200px;margin: 0 auto;}
 .main_box .header{overflow: hidden;}
 .logo{float: left;width: 200px}
 .right{float: right;width: 400px;}
-.left_nav{width: 180px;float: left;}
-.iframe{width: 800px;float: right;}
+.left_nav{width: 150px;float: left;}
+.iframe{width: 1040px;float: right;}
+
 /*表单样式*/
-button,select{outline:none}
+button,select,textarea{outline:none}
 .form{margin:10px 0;}
-.form .form_item{height: 40px;line-height: 40px;}
-.form .form_item span{width:100px;display: inline-block;}
-.form .input{height: 30px;line-height:30px;width: 200px;padding:0 5px;border:1px solid #bdbaba;}
+.form .form_item{line-height: 40px;margin-bottom: 10px}
+.form .form_item span{width:100px;display: inline-block;vertical-align: top}
+form .input{height: 30px;line-height:30px;width: 200px;padding:0 5px;border:1px solid #bdbaba;}
+form .input.wd400{width: 400px}
+.form .form_item textarea{border:1px solid #bdbaba;width:400px;height:70px;resize: none;padding:5px;}
 .form .select{width:100px;height: 30px;background: #fff;border:1px solid #bdbaba;}
 .form .button{border:1px solid #fff;height: 40px;line-height: 37px;background: #06a545;color:#fff;width:120px;margin: 10px 0}
 .form .button:hover{background: #098c3d}
+.form .form_item .editor{line-height:20px;height: 430px;overflow: hidden;display: inline-block;width:863px;}
+
 /*分页*/
 .page{margin: 10px 0}
 .pagination li{width: 30px;height: 30px;line-height:32px;text-align:center;float: left;margin-right: 2px}

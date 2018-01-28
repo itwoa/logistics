@@ -33,14 +33,14 @@ function p($data){
  */
 
 function trance_str($array,$value){
-	
+
 	return $array[$value];
 }
 /**
 	 * [ajaxUploadFile 上传文件]
 	 * @param  [type] $folder   [文件夹名称]
 	 * @param  [type] $filename [文件名，file的name]
-	 * 
+	 *
 	 */
 function ajaxUploadFile($folder,$filename){
 	header('Content-Type:application/json; charset=utf-8');
@@ -119,7 +119,7 @@ function substrExt($str, $start=0, $length,$suffix="",$charset="utf-8"){
 /**
  * 传递一个父级分类ID返回所有子级分类
  *
- */	
+ */
 function getChilds($user,$pid){
 	$arr = array();
 	foreach($user as $v){
@@ -189,7 +189,7 @@ function httpsRequest($url, $data){
  * 下载文件
  * @param  [type] $url      文件地址
  * @param  [type] $fileName 文件名
- * 
+ *
  */
 function download($url,$fileName){
 	ob_end_clean();
@@ -291,16 +291,89 @@ function parseTree($rows) {
  * @param  [type] $pid [description]
  * @return [type]      [description]
  */
-function get_attr($a,$pid){  
-    $tree = array(); 
-    foreach($a as $v){  
-        if($v['pid'] == $pid){                      
-            $v['children'] = get_attr($a,$v['id']);  
-            if($v['children'] == null){  
-                unset($v['children']); 
-            }  
-            $tree[] = $v;    
-        }  
-    }  
-    return $tree;  
+function get_attr($a,$pid){
+    $tree = array();
+    foreach($a as $v){
+        if($v['pid'] == $pid){
+            $v['children'] = get_attr($a,$v['id']);
+            if($v['children'] == null){
+                unset($v['children']);
+            }
+            $tree[] = $v;
+        }
+    }
+    return $tree;
+}
+
+/*
+ * PHPExcel 数据导出
+ * @parm $fileName 文件名称
+ * @parm $headArr Excel表头字段值 array()
+ * @parm $data 导出的数据 array()
+ *
+ */
+
+function getExcel($fileName,$headArr,$data){
+    //导入PHPExcel类库，因为PHPExcel没有用命名空间，只能inport导入
+    vendor('Excel.PHPExcel');
+	vendor('Excel.PHPExcel.Write.Excel5.php');
+	vendor('Excel.PHPExcel.IOFactory.php');
+
+    $date = date("Y.m.d",time());
+    $fileName .= "_{$date}.xls";
+
+    //创建PHPExcel对象，注意，不能少了\
+    $objPHPExcel = new \PHPExcel();
+    $objProps = $objPHPExcel->getProperties();
+	$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(20);
+
+	$objPHPExcel->getActiveSheet()->freezePaneByColumnAndRow(11,2);
+    //设置表头
+    $key = ord("A");
+    //print_r($headArr);exit;
+    foreach($headArr as $k=> $v){
+        $colum = chr($key);
+        $objPHPExcel->setActiveSheetIndex(0) ->setCellValue($colum.'1', $v);
+        $objPHPExcel->setActiveSheetIndex(0) ->setCellValue($colum.'1', $v);
+
+		$cellName  = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ');
+
+		$objPHPExcel->getActiveSheet()->getStyle($cellName[$k].'1')->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);//垂直居中
+		$objPHPExcel->getActiveSheet()->getStyle($cellName[$k].'1')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);//水平居中
+		$objPHPExcel->getActiveSheet()->getStyle($cellName[$k].'1')->getFont()->setBold(true);//字体加粗
+
+        $key += 1;
+    }
+
+    $column = 2;
+    $objActSheet = $objPHPExcel->getActiveSheet();
+
+	$idString = '';
+    foreach($data as $key => $rows){ //行写入
+        $span = ord("A");
+        foreach($rows as $keyName=>$value){// 列写入
+            $j = chr($span);
+            $objActSheet->setCellValue($j.$column, $value);
+            $span++;
+        }
+        $column++;
+		$idString .= ','.$rows['id'];
+    }
+
+    $fileName = iconv("utf-8", "gb2312", $fileName);
+
+    //重命名表
+    //$objPHPExcel->getActiveSheet()->setTitle('test');
+
+    //设置活动单指数到第一个表,所以Excel打开这是第一个表
+    $objPHPExcel->setActiveSheetIndex(0);
+    ob_end_clean();//清除缓冲区,避免乱码
+    header('Content-Type: application/vnd.ms-excel');
+    header("Content-Disposition: attachment;filename=\"$fileName\"");
+    header('Cache-Control: max-age=0');
+
+    $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+    $objWriter->save('php://output'); //文件通过浏览器下载
+
+	exit;
 }

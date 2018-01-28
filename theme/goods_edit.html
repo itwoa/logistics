@@ -1,0 +1,35 @@
+{layout name="layout" /}
+<div class="crumbs">
+当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('goods/index')}">物品管理</a>  • <span >添加子分类</span>
+</div>
+<div class="form">
+	<form action="{:url('creatUpdate')}" method="post">
+	{if condition="$info['pid'] neq 0"}
+	<div class="form_item">
+		<span>上级分类</span>
+		<select name="pid" class="select">
+			{volist name="goods" id="vo"}
+			<option value="{$vo.pid}" {if condition="$info['pid'] eq $vo['id']"}selected{/if}>{$vo.namee}</option>
+			{/volist}
+		</select>
+	</div>
+	{/if}
+	<div class="form_item">
+		<span>分类名称</span>
+		<input type="text" name="namee" class="input" value="{$info.namee}">
+	</div>
+	{if condition="$info['pid'] neq 0"}
+	<div class="form_item">
+		<span>数量</span>
+		<input type="text" name="nums" class="input" value="{$info.nums}">
+	</div>
+	{/if}
+	<div class="form_item">
+		<span>排序</span>
+		<input type="text" name="sort" class="input" value="{$info.sort}">
+	</div>
+	{:token('__token__', 'sha1')}
+	<input type="hidden" name="id" value="{$info.id}">
+	<button class="button"> 提 交</button>
+	</form>
+</div>

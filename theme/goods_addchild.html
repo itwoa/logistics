@@ -1,0 +1,23 @@
+{layout name="layout" /}
+<div class="crumbs">
+当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('goods/index')}">物品管理</a>  • <span >添加子分类</span>
+</div>
+<div class="form">
+	<form action="{:url('creat')}" method="post">
+	<div class="form_item">
+		<span>上级分类</span>
+		<input type="text" class="input" value="{$info.namee}" disabled>
+	</div>
+	<div class="form_item">
+		<span>分类名称</span>
+		<input type="text" name="namee" class="input">
+	</div>
+	<div class="form_item">
+		<span>数量</span>
+		<input type="text" name="nums" class="input">
+	</div>
+	{:token('__token__', 'sha1')}
+	<input type="hidden" name="pid" value="{$info.id}">
+	<button class="button"> 提 交</button>
+	</form>
+</div>

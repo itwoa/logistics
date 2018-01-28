@@ -1,0 +1,46 @@
+{layout name="layout" /}
+<div class="crumbs">
+当前位置： <a href="{:url('home/home')}">后台首页</a> • <a href="{:url('member/index')}">管理员</a>  • <span >管理员编辑</span>
+</div>
+<div class="form">
+	<form action="{:url('creatUpdate')}" method="post">
+		
+	<div class="form_item">
+		<span>账号</span>
+		<input type="text" name="username" class="input" value="{$info.username}">
+	</div>
+	<div class="form_item">
+		<span>姓名</span>
+		<input type="text" name="nick" class="input" value="{$info.nick}">
+	</div>
+	<div class="form_item">
+		<span>登录密码</span>
+		<input type="password" name="pwd" class="input">
+	</div>
+	<div class="form_item">
+		<span>确认密码</span>
+		<input type="password" name="sure_pwd" class="input">
+	</div>
+	{if condition="$info['id'] neq 1"}
+	<div class="form_item">
+		<span>账号类型</span>
+		<select name="acc_type" id="acc_type" class="select">
+			{volist name="accType" id="vo" key="k"}
+			<option value="{$k}" {if condition="$k eq $info['acc_type']"}selected{/if}>{$vo}</option>
+			{/volist}
+		</select>
+	</div>
+	{/if}
+	<div class="form_item">
+		<span>职位属性</span>
+		<select name="acc_attr" id="acc_attr" class="select">
+			{volist name="accTttr" id="vo" key="k"}
+			<option value="{$k-1}" {if condition="$k-1 eq $info['acc_attr']"}selected{/if}>{$vo}</option>
+			{/volist}
+		</select>
+	</div>
+	{:token('__token__', 'sha1')}
+	<input type="hidden" name="id" value="{$info['id']}">
+	<button class="button"> 提 交</button>
+	</form>
+</div>

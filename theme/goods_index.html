@@ -12,25 +12,37 @@
 				<th class="wd50">序号</th>
 				<th class="wd200">物品类型</th>
 				<th class="wd200">物品名称</th>
-				<th>添加账号</th>
-				<th class="wd150">添加时间</th>
 				<th class="wd300">操作</th>
 			</tr>
 		</thead>
 		<tbody>
+			{volist name="list" id="vo" key="k"}
 			<tr>
-				<td>1</td>
-				<td>办公用品</td>
+				<td>{$k}</td>
+				<td>{$vo.namee}</td>
 				<td></td>
-				<td>admin</td>
-				<td>2018-01-27 15:52</td>
 				<td>
-					<a href="{:url('addChild')}" class="pass">+添加子类</a>
-					<a href="" class="pass">编辑</a>
+					<a href="{:url('addChild',array('id'=>$vo['id']))}" class="pass">+添加子类</a>
+					<a href="{:url('edit',array('id'=>$vo['id']))}" class="pass">编辑</a>
 					<a href="" class="reject">删除</a>
 				</td>
 			</tr>
+			{if condition="isset($vo['child']) and $vo['child'] neq ''"}
+			{volist name="vo.child" id="item"}
 			<tr>
+				<td>{$item.id}</td>
+				<td>{if condition="end($vo['child'])['namee'] eq $item['namee']"}&nbsp;&nbsp;└─ {else /}&nbsp;&nbsp;├─ {/if}{$item.namee}</td>
+				<td></td>
+				<td>
+					<a href="{:url('edit',array('id'=>$item['id']))}" class="pass">编辑</a>
+					<a href="" class="reject">删除</a>
+				</td>
+			</tr>
+			{/volist}
+
+			{/if}
+			{/volist}
+			<!-- <tr>
 				<td>2</td>
 				<td>&nbsp;&nbsp;├─ 文件夹</td>
 				<td>文件袋</td>
@@ -77,7 +89,7 @@
 					<a href="" class="pass">编辑</a>
 					<a href="" class="reject">删除</a>
 				</td>
-			</tr>
+			</tr> -->
 			
 		</tbody>
 	</table>

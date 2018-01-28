@@ -23,7 +23,7 @@ class Member extends Common
 
     	// 获取分页显示
 		$page = $list->render();
-		
+
 		$this->assign('page', $page);
     	$this->assign('list',$list);
         $this->assign('title','管理员');
@@ -63,6 +63,76 @@ class Member extends Common
     	}else{
     		$this->error('添加失败！');
     	}
+
+    }
+
+    //管理员编辑
+    public function edit(){
+    	$id = input('id');
+
+    	$info = db('admin')->where('id',$id)->find();
+
+    	$accType = config('sys.admin_name');
+    	$accTttr = config('sys.admin_attri');
+    	unset($accType[0]);
+    	$this->assign('accType',$accType);
+    	$this->assign('accTttr',$accTttr);
+    	$this->assign('info',$info);
+    	return view();
+    }
+
+    //编辑更新
+    public function creatUpdate(){
+
+    	$request = request();
+    	$data = $request->post();
+
+    	if($data['pwd'] == ''){
+    		unset($data['pwd']);
+    	}else{
+
+    		if($data['pwd'] != $data['sure_pwd']){
+    		$this->error('两次密码输入不一致！');
+    		}
+    		$data['pwd'] = md5($data['pwd']);
+    	}
+
+    	unset($data['sure_pwd']);
+
+    	$validate = validate('Admin');
+
+    	if(!$validate->check($data)){
+		    $this->error($validate->getError());
+		}
+
+    	unset($data['__token__']);
+
+    	$res = db('admin')->update($data);
+
+    	if($res){
+    		$this->success('修改成功！',	url('index'));
+    	}else{
+    		$this->error('修改失败！');
+    	}
+
+    }
+
+    //管理员删除
+    public function memberDel(){
+    	$id = input('id');
+
+    	if($id == 1){
+    		$this->error('总管理员不允许删除！');
+    	}
+
+    	$res = db('admin')->delete($id);
+
+    	if($res){
+    		$this->success('删除成功！');
+    	}else{
+    		$this->error('删除失败！');
+    	}
+
 
     }
 }

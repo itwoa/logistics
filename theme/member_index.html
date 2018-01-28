@@ -4,7 +4,7 @@
 </div>
 <div class="content">
 	<div class="button">
-		<a href="{:url('add')}" class="add"> + 添加管理员</a>
+		<a href="{:url('add')}" class="add"> + 添加管理员</a>&emsp;<span><input type="checkbox" value="1" id="showAll"> 显示禁用账号</span>
 	</div>
 	<table>
 		<thead>
@@ -27,20 +27,19 @@
 				<td>{$vo.nick}</td>
 				<td>{$vo.acc_type|trance_str=config('sys.admin_name'),###}</td>
 				<td>{$vo.acc_attr|trance_str=config('sys.admin_attri'),###}</td>
-				<td>{$vo.state?'正常':'锁定'}</td>
+				<td>{$vo.status?"<span class='green'>正常</span>":"<span class='gray'>锁定</span>"}</td>
 				<td>{if condition="$vo['login_time'] neq ''"}{$vo.login_time|date="Y-m-d H:i",###}{else /}--{/if}</td>
 				<td>
 					<a href="{:url('edit',array('id'=>$vo['id']))}" class="edit">编辑</a>
+					<a href="{:url('edit',array('id'=>$vo['id'],'status'=>$vo['status']))}" class="enable {if condition="$vo['status'] eq 0"}disable{/if}" >{if condition="$vo['status'] eq 1"}禁用{else /}启用{/if}</a>
 					<a {if condition="$vo['id'] eq 1"}class="unclick"{else /}href="" class="del"{/if}>删除</a>
 				</td>
 			</tr>
 			{/volist}
-			
 		</tbody>
 	</table>
 	<div class="page">
 		{$page}
 	</div>
-
 </div>
 

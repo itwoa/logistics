@@ -9,7 +9,7 @@ class Index extends Controller
 {
     public function index()
     {
-       
+
         echo config('SYS.UP_MAX_SIZE');
         return $this->fetch();
     }
@@ -29,8 +29,7 @@ class Index extends Controller
             if(!captcha_check($verify_code)) {
                 $data = [
                     'status' => 0,
-                    'msg' => '验证码错误！',
-                    'target' => 2
+                    'msg' => '验证码错误！'
                 ];
                 exit(json_encode($data));
             }
@@ -40,24 +39,33 @@ class Index extends Controller
             if(!$user || $user['pwd'] != md5($password)){
                 $data = [
                     'status' => 0,
-                    'msg' => '用户名或密码错误！',
-                    'target' => 2
-                ];
-                exit(json_encode($data));
-            }else{
-                db('admin')->where('id', $user['id'])->update(['login_time' => time()]);
-                //缓存登录数据
-                session('nick', $user['nick']);
-                session('adminid', $user['id']);
-                session('username',$user['username']);
-                session('lasttime', time());
-                session('logintime',date("Y-m-d H:i",$user['login_time']));
-                $data = [
-                    'status' => 1,
-                    'url' => '/home/'
+                    'msg' => '用户名或密码错误！'
                 ];
                 exit(json_encode($data));
             }
+
+            if($user['status'] != 1){
+                $data = [
+                    'status' => 0,
+                    'msg' => '该账号已被禁用！'
+                ];
+                exit(json_encode($data));
+            }
+
+            db('admin')->where('id', $user['id'])->update(['login_time' => time()]);
+            //缓存登录数据
+            session('nick', $user['nick']);
+            session('acctype', $user['acc_type']);
+            session('adminid', $user['id']);
+            session('username',$user['username']);
+            session('lasttime', time());
+            session('logintime',date("Y-m-d H:i",$user['login_time']));
+            $data = [
+                'status' => 1,
+                'url' => '/home/'
+            ];
+            exit(json_encode($data));
+
 
 
         }

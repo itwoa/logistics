@@ -1,0 +1,43 @@
+
+.main_box{width: 1200px;margin:0 auto;}
+.main_box a{color:#000;outline:none}
+.main_box a:hover{color:#2d93ca;}
+/*顶部样式*/
+.main_box .header{border-bottom:1px solid #ddd;padding:5px 15px;overflow: hidden;}
+.main_box .header .logo{font-size: 16px;width:200px;float: left;}
+.main_box .header .right{float: right;width: 500px;text-align: right;}
+.main_box .header .right .login_out{color:#3580e0;margin-left: 10px;}
+.main_box .header .right .login_out:hover{text-decoration: underline;}
+.main_box .content{overflow: hidden;}
+/*左侧导航*/
+.main_box .left_nav{width: 150px;padding:15px;float: left;}
+.main_box .left_nav li{height: 35px;line-height: 35px;text-align: center;}
+.main_box .left_nav li a{display: block;}
+.main_box .left_nav li a.current{background:#2d93ca;color:#fff;border-radius: 3px;}
+.main_box .content .iframe{width:1000px;float:right;margin:10px 0;}
+.crumbs {margin-bottom: 20px}
+.crumbs a{color:#197bb1;font-size: 14px;}
+.crumbs a:hover{color:#2d93ca;text-decoration: underline;}
+
+/*表格*/
+.content table{border:1px solid #999;}
+.content table thead{background: #009f95;color: #fff;}
+.content table thead tr{border: #009f95 2px solid;}
+.content table th{border-bottom:0;width:100px;}
+.content table th.wd50{width: 50px}
+.content table th.wd150{width: 150px}
+.content table th.wd200{width:200px}
+.content table th.wd300{width:300px}
+.content table td .pass{color:#fff;margin-right: 10px;background:#009f95;padding:5px 10px;border-radius: 3px}
+.content table td .reject{color:#fff;background:#9f0057;padding:5px 10px;border-radius: 3px}
+.content table td .edit{color:#fff;background:#197bb1;padding:5px 10px;border-radius: 3px}
+.content table td .del{color:#fff;background:#e81010;padding:5px 10px;border-radius: 3px}
+.content table td .unclick{background: #a09e9e;padding:5px 10px;border-radius: 3px;color:#efebeb;}
+.content table td .pass:hover{background: #088a82}
+.content table td .reject:hover{background: #860b4e}
+.content table td .edit:hover{background: #065f90}
+.content table td .del:hover{background:#c50606}
+.content table td.link a{color:#009f95;}
+.content table td.link a:hover{text-decoration: underline;}
+.content .button .add{color:#009f95;margin-bottom: 10px;display: inline-block;font-size: 16px;}
+.content .button .add:hover{text-decoration: underline;}

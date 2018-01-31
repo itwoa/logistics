@@ -28,6 +28,7 @@
 .content table th.wd150{width: 150px}
 .content table th.wd200{width:200px}
 .content table th.wd300{width:300px}
+.content table td {font-family:-webkit-pictograph}
 .content table td .pass{color:#fff;margin-right: 10px;background:#009f95;padding:5px 10px;border-radius: 3px}
 .content table td .reject{color:#fff;background:#9f0057;padding:5px 10px;border-radius: 3px}
 .content table td .edit{color:#fff;background:#197bb1;padding:5px 10px;border-radius: 3px}

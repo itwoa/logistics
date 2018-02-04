@@ -1,10 +1,4 @@
-body{font-family: 'microsoft yehei'}
-.main_box{width: 1200px;margin: 0 auto;}
-.main_box .header{overflow: hidden;}
-.logo{float: left;width: 200px}
-.right{float: right;width: 400px;}
-.left_nav{width: 150px;float: left;}
-.iframe{width: 1040px;float: right;}
+
 
 /*表单样式*/
 button,select,textarea{outline:none}

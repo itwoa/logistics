@@ -1,7 +1,6 @@
 $(window).on('load', function () {
 	var height = $(window).outerHeight()-$(".header").height()-40;
 	$("#iframe").css('height',height);
-	console.log($(window).outerHeight());
 })
 /*左侧导航点击*/
 $(".left_nav a").on("click", function () {
@@ -16,6 +15,14 @@ $(".left_nav a").on("click", function () {
         $(this).fadeIn();
     })
 });
+
+//二级菜单
+$(".left_nav .nav_item").on('click',function(){
+    $('.nav_item').removeClass('current')
+    $(this).addClass('current');
+    $(this).next('ul').toggle(300).siblings('ul').hide();
+
+})
 
 
 

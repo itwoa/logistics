@@ -1,46 +1,86 @@
-html,body{height:100%;min-width:1000px;}
-.footBdy{}
-.homeBox{width:1000px;max-width:1200px;margin:0 auto;padding:75px 0 100px;}
-.login{border:1px solid #ddd;}
-/*导航*/
-.registerType{overflow: hidden;height:40px;line-height: 40px;margin-top:-10px;margin-bottom:30px;color:#373d41}
-.registerType span{float:left;width:50%;text-align: center;cursor: pointer;}
-.registerType span.registerUp{background: #1F2325;color:#fff;font-size:18px;font-weight: bold}
-/*主体*/
-.wrapper{width:385px;padding: 30px 0;background: #fff;}
-.wrapper h6{padding: 0 27px;font-size: 18px;color: #373D41;}
-.reset-pwd {width: 330px;margin: 10px auto 0}
-.reset-pwd li {margin-bottom: 12px;position: relative;}
-.reset-pwd li input{width:100%;height:40px;box-sizing: border-box;padding:10px 10px 10px 45px;border:1px solid #D7D8D9;font-size:15px;}
-.txt.form-verifycode{width: 180px;}
-.img-code{float:right;height: 38px;width: 132px;border:1px solid #D7D8D9;}
-.btn-cheng{width: 100%;height: 45px;line-height: 45px;font-size: 18px;margin-top: 15px;background-color: #00C1DE;color: #fff;text-align: center;border-radius: 2px;border: 0;}
-.btn-cheng:hover{background-color: #00b7d3;}
-.reset-pwd li .icon{position: absolute;left:16px;top:4px;font-size:21px;color:#888585;}
-.reset-pwd li p{color: #f33;height: 19px;line-height: 19px;padding-left: 22px;/margin-top: 6px;position: relative;}
-.reset-pwd li p i{position: absolute;left:0;top:0;font-size:18px;}
-.reset-pwd li p i.fa-close{color: #fff;font-size: 12px;top: 3px;left: 3px;}
-.reset-pwd li a{color: #9B9EA0;}
-.reset-pwd li a:hover {color: #08c;}
+button,a{outline: none}
+.login_body {
+        width: 100%;
+        height: 100%;
+        background: url("../images/bg.png") no-repeat top center;
+        background-size: cover;
+        overflow: hidden;
+        position: fixed;
+        font-family: 'Micosoft yahei'
+    }
 
-.homeTitle{margin-top: -35px;}
-.homeTitle h1{font-size: 30px;color: #FFFFFF;line-height: 36px;margin-bottom: 19px;font-weight: bold;}
-.homeTitle li{font-size: 14px;color: #FFFFFF;letter-spacing: 0.47px;line-height: 30px;}
-.loginHead{width:1000px;margin:20px auto 0 auto;padding: 12px 0;border-bottom: 1px solid rgba(255,255,255,0.3);}
-.loginHead .indexUrl{margin-left:20px;display: inline-block;}
-.loginHead img{height:36px;}
-.loginHead ul{margin-right:20px;}
-.loginHead li{height:36px;line-height:36px;}
-.loginHead li a{color:#fff;transition: color .3s;}
-.loginHead li a:hover{color: #00c1de;}
-button:focus{outline: none;}
-/*页尾*/
-.footBox{width: 100%;min-width:1000px;max-width:1200px;color:#fff;margin: 10px auto 20px;padding: 20px;box-sizing: border-box;border-top: 1px solid #ddd;}
-.footBox .lianJie1 a{font-size: 16px;color: #9b9ea0;margin-right: 35px;transition: color .3s;}
-.footBox p a:hover{color: #00c1de;}
-.footBox .lianJie2{padding-top: 32px;}
-.footBox .lianJie2 a{color: #73777a;margin-right: 10px;margin-top: 10px;transition: color .3s;}
-.footBox .lianJie3{color: #73777a;margin-top: 10px;}
-.footBox .lianJie4 a{display: inline-block;color: #73777a;height:25px;line-height: 25px;margin-top: 10px;}
-.lianJie4 img{height:25px;}
-.lianJie4 span{margin-left:5px;}
+    .denglu {
+        width: 400px;
+        height: 424px;
+        margin: 0 auto;
+        background: url("../images/denglu.png") no-repeat top center;
+        overflow: hidden;
+        position: absolute;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .denglu h4 {
+        text-align: center;
+        margin: 45px 0 23px 0;
+        color: #535353;
+        font-weight: 800;
+        font-size: 22px
+    }
+
+    .denglu .item {
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .denglu .input {
+        width: 310px;
+        height: 42px;
+        font-size: 14px;
+        line-height: 42px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 0 10px;
+    }
+
+    .denglu .input.wd190 {
+        width: 190px;
+        margin-right: 10px
+    }
+
+    .denglu img.code {
+        width: 105px;
+        height: 42px;
+        vertical-align: middle;
+        border: 0px solid #ddd;
+        border-radius: 3px;
+        margin-top: -3px
+    }
+
+    .denglu .button {
+        margin: 20px auto 10px auto;
+        text-align: center;
+        cursor: pointer;
+        width: 336px;
+        height: 46px;
+        background: url("../images/button.png") no-repeat;
+        background-size: cover;
+        border:0;
+        display: block;
+    }
+
+    .denglu .button img {
+        width: 336px
+    }
+
+    .denglu .copy {
+        width: 336px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 12px;
+        word-spacing:2px;
+    }
+
+    ;
+}

@@ -20,9 +20,9 @@ class Index extends Controller
         if (Request::instance()->isPost()) {
 
             $account = input('username', 0, 'trim');
-            $password = input('password', 0, 'trim');
+            $password = input('pwd', 0, 'trim');
             //验证码
-            $verify_code = input('passcode', '0', 'trim');
+            $verify_code = input('imgcode', '0', 'trim');
             $type = input('type');
 
             //验证验证码是否正确

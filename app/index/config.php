@@ -8,9 +8,9 @@ return [
       'view_depr'    => '_',
       // 视图输出字符串内容替换
       'view_replace_str'  =>  [
-        'JS'=>'/static/js',
+        '__JS__'=>'/static/js',
         'LIB'=>'/static/js/lib',
-        'CSS'=>'/static/css',
+        '__CSS__'=>'/static/css',
         'IMG'=>'/static/images'
       ],
       'token'     => [

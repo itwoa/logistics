@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-	var height = $(window).outerHeight()-$(".header").height()-40;
+	var height = $(window).outerHeight()-$(".header").height()-10;
 	$("#iframe").css('height',height);
 })
 

@@ -4,7 +4,8 @@ body,html{height: 100%;margin:0;padding:0;}
 .main_box a:hover{color:#2d93ca;}
 /*顶部样式*/
 .main_box .header{border-bottom:1px solid #ddd;padding:0 15px;overflow: hidden;height: 50px;line-height: 50px;position: relative;}
-.main_box .header .logo{font-size: 16px;width:200px;float: left;}
+.main_box .header .logo{font-size: 16px;width:165px;float: left;}
+.logo .fa-bars{cursor: pointer;padding-left: 15px;}
 .main_box .header .right{float: right;width: 500px;text-align: right;}
 .main_box .header .right .login_out{color:#3580e0;margin-left: 10px;}
 .main_box .header .right .login_out:hover{text-decoration: underline;}

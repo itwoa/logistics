@@ -35,5 +35,17 @@ $(".left_nav a").on("click", function () {
     })
 });
 
+//切换显示
+$(".logo .fa-bars").on("click",function(){
+
+    $(this).toggleClass("show");
+    if($(this).hasClass('show')){
+        $(".left_nav").hide();
+        $(".main_box .content .iframe").css("marginLeft",0);
+    }else{
+        $(".left_nav").show();
+        $(".main_box .content .iframe").css("marginLeft",180);
+    }
+})
 
 

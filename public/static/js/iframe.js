@@ -37,7 +37,6 @@ $(".left_nav a").on("click", function () {
 
 //切换显示
 $(".logo .fa-bars").on("click",function(){
-
     $(this).toggleClass("show");
     if($(this).hasClass('show')){
         $(".left_nav").hide();
@@ -46,6 +45,11 @@ $(".logo .fa-bars").on("click",function(){
         $(".left_nav").show();
         $(".main_box .content .iframe").css("marginLeft",180);
     }
+});
+//管理控制台
+$("#control").on("click",function(){
+    $(".left_nav a,.nav_item").removeClass('current');
+    $(".left_nav ul").hide();
 })
 
 

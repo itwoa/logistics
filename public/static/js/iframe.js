@@ -36,7 +36,7 @@ $(".left_nav a").on("click", function () {
 });
 
 //切换显示
-$(".logo .fa-bars").on("click",function(){
+$(".logo .fa-bars").unbind().on("click",function(){
     $(this).toggleClass("show");
     if($(this).hasClass('show')){
         $(".left_nav").hide();

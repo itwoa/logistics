@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>后台首页</title>
+    <title>后台管理</title>
     <link rel="stylesheet" href="__CSS__/base.min.css">
     <link rel="stylesheet" href="__CSS__/style.css">
-    <link rel="stylesheet" href="__CSS__/common.css">
     <link rel="stylesheet" href="__CSS__/fontsome/font-awesome.min.css">
 </head>
-
 <body>
     <div class="main_box">
         <div class="header">
@@ -19,6 +16,7 @@
                 <span><a href="{:url('home')}" target="iframe" id="control">管理控制台</a></span>
             </div>
             <div class="right">
+                <i class="fa-bell"></i><span class="notice">10</span>
                 <span>当前账号：{$Think.session.username}</span>&emsp;
                 <span>上次登录时间：{$Think.session.logintime}</span>
                 <a href="{:url('Index/logout')}" class="login_out" ajaxReturn confirmation="确定要退出系统么？">退出</a>
@@ -26,8 +24,8 @@
         </div>
         <div class="content">
             <div class="left_nav">
-                <div class="nav_item"> <i class="fa-caret-right"></i> 一级菜单</div>
-                <ul>      
+                <div class="nav_item"> <i class="fa-caret-right"></i> 内容管理</div>
+                <ul>
                     <li><a href="{:url('apply/index')}" target="iframe"><i class="fa-paper-plane"></i> 申请列表</a></li>
                     <li><a href="{:url('goods/index')}" target="iframe"><i class="fa-bookmark"></i> 物品管理</a></li>
                     <li><a href="{:url('notice/index')}" target="iframe"><i class="fa-bullhorn"></i> 系统公告</a></li>
@@ -37,13 +35,15 @@
                     <li><a href="{:url('member/index')}" target="iframe"><i class="fa-tachometer"></i> 会员列表</a></li>
                     <li><a href="javascript:;" target="iframe"><i class="fa-user"></i> 角色管理</a></li>
                     <li><a href="javascript:;" target="iframe"><i class="fa-paper-plane"></i> 权限管理</a></li>
-                    
                 </ul>
                 <div class="nav_item"> <i class="fa-caret-right"></i> 系统设置</div>
                 <ul>
                     <li><a href="javascript:;" target="iframe"><i class="fa-tachometer"></i> 网站参数</a></li>
                     <li><a href="javascript:;" target="iframe"><i class="fa-user"></i> 友情链接</a></li>
-                   
+                </ul>
+                <div class="nav_item"> <i class="fa-caret-right"></i> 微信设置</div>
+                <ul>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-tachometer"></i> 接口设置</a></li>
                 </ul>
             </div>
             <div class="iframe">
@@ -56,5 +56,4 @@
     <script src="__JS__/lib/ajaxReturn.min.js" type="text/javascript"></script>
     <script src="__JS__/iframe.js" type="text/javascript"></script>
 </body>
-
 </html>

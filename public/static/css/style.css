@@ -10,7 +10,9 @@ button,select,textarea{outline:none}
 .main_box .header .logo i:hover{color: #197bb1}
 .main_box .header .logo span{padding-left: 15px;display: inline-block;border-left: 1px solid #42485b}
 .logo .fa-bars{cursor: pointer;padding-left: 15px;}
-.main_box .header .right{float: right;width: 500px;text-align: right;margin-right: 15px;}
+.main_box .header .right{float: right;text-align: right;margin-right: 15px;}
+.main_box .header .right .fa-bell{width: 14px;height: 14px;display: inline-block;}
+.main_box .header .right .notice{font-size: 12px;background: #f90;color:#fff;border-radius: 5px;padding:2px 5px;margin:0 10px 0 6px;cursor: pointer;}
 .main_box .header .right .login_out{color:#3580e0;margin-left: 10px;}
 .main_box .header .right .login_out:hover{text-decoration: underline;}
 .main_box .content{overflow: hidden;overflow-y: auto}

@@ -4,11 +4,12 @@
 </div>
 <div class="content">
 	<div class="button">
-		<a href="{:url('add')}" class="add"> + 添加管理员</a>&emsp;<span><input type="checkbox" value="1" id="showAll"> 显示禁用账号</span>
+		<a href="{:url('add')}" class="add"> + 添加管理员</a>&emsp;<span class="checkbox show {if condition="$show eq 1"}checked{/if}"><i></i> 显示禁用账号</span>
 	</div>
 	<table>
 		<thead>
 			<tr>
+				<th class="wd20"><input type="checkbox" id="allcheck"></th>
 				<th class="wd50">序号</th>
 				<th>账号</th>
 				<th>姓名</th>
@@ -16,12 +17,13 @@
 				<th>属性</th>
 				<th>状态</th>
 				<th class="wd150">上次登录时间</th>
-				<th class="wd200">操作</th>
+				<th class="wd300">操作</th>
 			</tr>
 		</thead>
 		<tbody>
 			{volist name="list" id="vo" key="k"}
 			<tr>
+				<td><input type="checkbox"></td>
 				<td>{$k}</td>
 				<td>{$vo.username}</td>
 				<td>{$vo.nick}</td>
@@ -30,9 +32,9 @@
 				<td>{$vo.status?"<span class='green'>正常</span>":"<span class='gray'>锁定</span>"}</td>
 				<td>{if condition="$vo['login_time'] neq ''"}{$vo.login_time|date="Y-m-d H:i",###}{else /}--{/if}</td>
 				<td>
-					<a href="{:url('edit',array('id'=>$vo['id']))}" class="edit">编辑</a>
-					<a href="{:url('edit',array('id'=>$vo['id'],'status'=>$vo['status']))}" class="enable {if condition="$vo['status'] eq 0"}disable{/if}" >{if condition="$vo['status'] eq 1"}禁用{else /}启用{/if}</a>
-					<a {if condition="$vo['id'] eq 1"}class="unclick"{else /}href="" class="del"{/if}>删除</a>
+					<a href="{:url('edit',array('id'=>$vo['id']))}" class="button blue edit">编辑</a>
+					<a href="{:url('edit',array('id'=>$vo['id'],'status'=>$vo['status']))}" class="button red enable {if condition="$vo['status'] eq 0"}green disable{/if}" >{if condition="$vo['status'] eq 1"}禁用{else /}启用{/if}</a>
+					<a {if condition="$vo['id'] eq 1"}class="button gray unclick"{else /}href="" class="button red del"{/if}>删除</a>
 				</td>
 			</tr>
 			{/volist}
@@ -42,4 +44,25 @@
 		{$page}
 	</div>
 </div>
+<script type="text/javascript">
+$(".show").on('click',function(){
+	var checked = 0;
+	var url = $(window.parent.document).find("#iframe").attr("src");
+
+	if($(this).hasClass('checked')){
+		checked = 1;
+	}
+
+	var suffix = url.split('.');
+	var iframeSrc = "";
+	if(url.match(/show\/\d/)){
+		iframeSrc = url.replace(/show\/\d/,"show/"+checked);
+	}else{
+		iframeSrc = suffix[0]+'/show/'+checked+'.'+suffix[1];
+	}
+	
+	$(window.parent.document).find("#iframe").attr("src",iframeSrc);
+	
+})
+</script>
 

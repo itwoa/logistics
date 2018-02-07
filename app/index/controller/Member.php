@@ -19,11 +19,18 @@ class Member extends Common
 
 	//管理员首页
     public function index(){
-    	$list = db('admin')->paginate(5);
+        $show = input('show')?:0;
+        
+        $where = [];
+        if($show == 0){
+            $where['status'] = 1;
+        }  
+    	$list = db('admin')->where($where)->paginate(5);
 
     	// 获取分页显示
 		$page = $list->render();
 
+        $this->assign('show', $show);
 		$this->assign('page', $page);
     	$this->assign('list',$list);
         $this->assign('title','管理员');

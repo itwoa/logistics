@@ -7,19 +7,34 @@
     <link rel="stylesheet" href="__CSS__/style.css">
     <link rel="stylesheet" href="__CSS__/fontsome/font-awesome.min.css">
 </head>
-<body>
+<body onselectstart="return false">
     <div class="main_box">
         <div class="header">
             <div class="logo">
-                Benny
+                Benny 
                 <i class="fa-bars hide"></i>
                 <span><a href="{:url('home')}" target="iframe" id="control">管理控制台</a></span>
             </div>
             <div class="right">
-                <i class="fa-bell"></i><span class="notice">10</span>
-                <span>当前账号：{$Think.session.username}</span>&emsp;
-                <span>上次登录时间：{$Think.session.logintime}</span>
-                <a href="{:url('Index/logout')}" class="login_out" ajaxReturn confirmation="确定要退出系统么？">退出</a>
+                <div class="notice">
+                     <i class="fa-bell"></i><span class="noc_box">10</span>
+                </div>
+               
+                <div class="user_name">
+                    <span class="pd5 bl"><img src="__IMG__/default_handsome.jpg" class="head_thumb"></span>       
+                    <div class="topbar dn">
+                        <div class="portrait">
+                            <img src="__IMG__/default_handsome.jpg">
+                            <p>当前账号：{$Think.session.username}</p>
+                        </div>
+                        <div class="facile_menu">
+                            <a href=""><span class="user_icon fa-user-circle"></span><span>账号资料</span></a>
+                            <a href=""><span class="user_icon fa-envelope-o"></span><span>消息管理</span></a>
+                            <a href=""><span class="user_icon fa-folder-open-o"></span><span>我的文件</span></a>
+                        </div>
+                        <a href="{:url('Index/logout')}" ajaxReturn confirmation="确定要退出系统么？" class="bottom">退出当前登录</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="content">
@@ -32,18 +47,21 @@
                 </ul>
                 <div class="nav_item"> <i class="fa-caret-right"></i> 用户管理</div>
                 <ul>
-                    <li><a href="{:url('member/index')}" target="iframe"><i class="fa-tachometer"></i> 会员列表</a></li>
+                    <li><a href="{:url('member/index',array('show'=>0))}" target="iframe"><i class="fa-tachometer"></i> 会员列表</a></li>
                     <li><a href="javascript:;" target="iframe"><i class="fa-user"></i> 角色管理</a></li>
                     <li><a href="javascript:;" target="iframe"><i class="fa-paper-plane"></i> 权限管理</a></li>
                 </ul>
                 <div class="nav_item"> <i class="fa-caret-right"></i> 系统设置</div>
                 <ul>
-                    <li><a href="javascript:;" target="iframe"><i class="fa-tachometer"></i> 网站参数</a></li>
-                    <li><a href="javascript:;" target="iframe"><i class="fa-user"></i> 友情链接</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-cog"></i> 网站参数</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-link"></i> 友情链接</a></li>
                 </ul>
-                <div class="nav_item"> <i class="fa-caret-right"></i> 微信设置</div>
+                <div class="nav_item"> <i class="fa-caret-right"></i> 微信平台</div>
                 <ul>
-                    <li><a href="javascript:;" target="iframe"><i class="fa-tachometer"></i> 接口设置</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-weixin"></i> 接口设置</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-folder"></i> 素材管理</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-hourglass"></i> 自定义菜单</a></li>
+                    <li><a href="javascript:;" target="iframe"><i class="fa-leaf"></i> 关键词回复</a></li>
                 </ul>
             </div>
             <div class="iframe">

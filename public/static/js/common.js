@@ -32,3 +32,16 @@ $('.crumbs a').on('click',function(e){
         }
     })
 });
+//checkbox 选
+$("table #allcheck").on("click",function(){
+    if($(this).prop("checked")){
+        $(this).parents("table").find("input:checkbox").prop("checked",true);
+    }else{
+        $(this).parents("table").find("input:checkbox").prop("checked",false);
+    }
+    
+})
+//模拟checkbox
+$(".checkbox i").on("click",function(){
+    $(this).parent().toggleClass("checked");
+})

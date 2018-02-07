@@ -6,13 +6,6 @@ return [
       'view_path'    => '../theme/',
       // 模板文件名分隔符
       'view_depr'    => '_',
-      // 视图输出字符串内容替换
-      'view_replace_str'  =>  [
-        '__JS__'=>'/static/js',
-        'LIB'=>'/static/js/lib',
-        '__CSS__'=>'/static/css',
-        'IMG'=>'/static/images'
-      ],
       'token'     => [
         'token_on'    => true,
         'token_name'  => '__hash__',

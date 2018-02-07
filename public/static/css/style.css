@@ -1,20 +1,37 @@
-body,html{height: 100%;margin:0;padding:0;}
+body,html{height: 100%;margin:0;padding:0;-moz-user-select: none;}
 button,select,textarea{outline:none}
+.pdr15 {padding-right: 15px;}
+.pd5{padding: 0 5px}
+.bl{display: block}
+.green{color:#00ae59;}
+.gray{color:#a09e9e;}
 .main_box{overflow: hidden;height: 100%;position: relative;}
 .main_box a{color:#000;outline:none}
 .main_box a:hover{color:#2d93ca;}
 /*顶部样式*/
-.main_box .header{border-bottom:1px solid #42485b;overflow: hidden;height: 40px;line-height: 40px;position: relative;}
+.main_box .header{border-bottom:1px solid #42485b;height: 40px;line-height: 40px;position: relative;}
 .main_box .header .logo{font-size: 16px;width:200px;float: left;margin-left: 15px;}
 .main_box .header .logo i{display: inline-block;padding:0 15px;}
 .main_box .header .logo i:hover{color: #197bb1}
-.main_box .header .logo span{padding-left: 15px;display: inline-block;border-left: 1px solid #42485b}
+.main_box .header .logo span{padding-left: 15px;display: inline-block;border-left: 1px solid #42485b;-ms-user-select:none;}
 .logo .fa-bars{cursor: pointer;padding-left: 15px;}
-.main_box .header .right{float: right;text-align: right;margin-right: 15px;}
+.main_box .header .right{float: right;text-align: right;position: relative;}
 .main_box .header .right .fa-bell{width: 14px;height: 14px;display: inline-block;}
-.main_box .header .right .notice{font-size: 12px;background: #f90;color:#fff;border-radius: 5px;padding:2px 5px;margin:0 10px 0 6px;cursor: pointer;}
+.main_box .header .right .notice{display: inline-block;padding:0 15px;margin-right: -5px}
+.main_box .header .right .notice:hover{background: #42485b;color:#fff;}
+.main_box .header .right .notice .noc_box{font-size: 12px;background: #f90;color:#fff;border-radius: 5px;padding:3px 12px;margin-left:6px;cursor: pointer;}
 .main_box .header .right .login_out{color:#3580e0;margin-left: 10px;}
 .main_box .header .right .login_out:hover{text-decoration: underline;}
+.main_box .header .right .user_name{display: inline-block;border-left: 1px solid #42485b}
+.main_box .header .right .user_name:hover{background: #42485b}
+.main_box .header .right .user_name .head_thumb{width: 35px;border-radius: 18px;vertical-align: middle;cursor: pointer;margin-top: -2px;}
+.main_box .header .right .topbar{border:1px solid #ddd;width:246px;position: absolute;right: 0;top: 40px;z-index: 9;background: #fff;border-top: 1px solid #42485b}
+.main_box .header .right .topbar .portrait{text-align: center;border-bottom: 1px solid #ddd;padding-top:10px}
+.main_box .header .right .topbar .portrait img{width: 36px;height: 36px;border-radius: 18px}
+.main_box .header .right .topbar .bottom{display: block;background: #ddd;text-align: center;margin-top: 30px;color:#788d9b;}
+.main_box .header .right .facile_menu{overflow: hidden;}
+.main_box .header .right .facile_menu a{display: block;width: 80px;height: 80px;float: left;text-align: center;border-radius: 2px;color:#333;font-size: 12px}
+.main_box .header .right .facile_menu a .user_icon{width:40px;height: 40px;display: block;line-height: 40px;color:#fff;background:#788d9b;margin:8px auto 0px;font-size: 20px;}
 .main_box .content{overflow: hidden;overflow-y: auto}
 /*左侧导航*/
 .main_box .left_nav{width: 180px;height:100%;float: left;position: fixed;background:#333744;overflow-y:auto;}
@@ -35,28 +52,45 @@ button,select,textarea{outline:none}
 /*表格*/
 .content table{border:1px solid #999;}
 .content table thead{background: #009f95;color: #fff;}
-.content table thead tr{border: #009f95 2px solid;}
+.content table #allcheck{margin-left: 2px;}
 .content table th{border-bottom:0;width:100px;}
+.content table th.wd20{width: 20px}
 .content table th.wd50{width: 50px}
 .content table th.wd150{width: 150px}
 .content table th.wd200{width:200px}
 .content table th.wd300{width:300px}
 .content table td {font-family:-webkit-pictograph}
+.content table td .button{display: inline-block;height: 25px;line-height: 25px;padding: 0 15px;border-radius: 3px;margin-right: 0px;}
+/*蓝色按钮*/
+.content table td .button.blue{border:1px solid #0084ff;color:#0084ff;}
+.content table td .button.blue:hover{background:#0084ff;color:#fff;}
+/*红色按钮*/
+.content table td .button.red{border:1px solid #f85847;color:#f85847;}
+.content table td .button.red:hover{background:#f85847;color:#fff;}
+/*灰色按钮*/
+.content table td .button.gray{border:1px solid #a09e9e;color:#fff;background:#a09e9e }
+.content table td .button.gray:hover{cursor: not-allowed}
+/*绿色按钮*/
+.content table td .button.green{border:1px solid #00ae59;color:#00ae59; }
+.content table td .button.green:hover{background:#00ae59;color:#fff;}
+/*紫色按钮*/
+.content table td .button.purple{border:1px solid #9f0057;color:#9f0057; }
+.content table td .button.purple:hover{background:#9f0057;color:#fff;}
+
 .content table td .pass{color:#fff;margin-right: 10px;background:#009f95;padding:5px 10px;border-radius: 3px}
 .content table td .reject{color:#fff;background:#9f0057;padding:5px 10px;border-radius: 3px}
-.content table td .edit{color:#fff;background:#197bb1;padding:5px 10px;border-radius: 3px}
-.content table td .del{color:#fff;background:#e81010;padding:5px 10px;border-radius: 3px}
-.content table td .unclick{background: #a09e9e;padding:5px 10px;border-radius: 3px;color:#efebeb;}
+
+
 .content table td .pass:hover{background: #088a82}
 .content table td .reject:hover{background: #860b4e}
-.content table td .edit:hover{background: #065f90}
-.content table td .del:hover{background:#c50606}
+
 .content table td.link a{color:#009f95;}
 .content table td.link a:hover{text-decoration: underline;}
 .content .button .add{color:#009f95;margin-bottom: 10px;display: inline-block;font-size: 16px;}
 .content .button .add:hover{text-decoration: underline;}
 
 /*表单样式*/
+thead th{padding: 3px 8px;background: #F5F6FA;color:#999;border:1px solid #E1E6EB;}
 .form{margin:10px 0;}
 .form .form_item{line-height: 40px;margin-bottom: 10px}
 .form .form_item span{width:100px;display: inline-block;vertical-align: top}
@@ -72,5 +106,9 @@ form .input.wd400{width: 400px}
 .page{margin: 10px 0}
 .pagination li{width: 30px;height: 30px;line-height:32px;text-align:center;float: left;margin-right: 2px}
 .pagination li a{display: block;color:#999;}
-.pagination li.active,.pagination li:hover{background:#2d93ca;color:#fff;}
+.pagination li.active,.pagination li:hover{background:#09C;color:#fff;}
 .pagination li:hover a{color:#fff}
+
+/*模拟checkbox*/
+.checkbox i{width:16px;height:16px;background: url("../images/bee-icon.png") no-repeat -197px -90px;vertical-align: middle;cursor: pointer;display: inline-block;overflow: hidden;margin-top: -2px}
+.checkbox.checked i{background-position:-107px -171px; }

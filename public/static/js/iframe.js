@@ -5,8 +5,7 @@ $(window).on('load', function () {
 
 //导航一级菜单
 $(".left_nav .nav_item").on('click',function(){
-    $('.nav_item').removeClass('current');
-    
+    $('.nav_item').removeClass('current'); 
     $(this).addClass('current');
     $(this).next('ul').toggle(300).siblings('ul').hide();
 
@@ -50,6 +49,11 @@ $(".logo .fa-bars").unbind().on("click",function(){
 $("#control").on("click",function(){
     $(".left_nav a,.nav_item").removeClass('current');
     $(".left_nav ul").hide();
+});
+
+$(".user_name").off().hover(function(){
+
+    $(".topbar").toggleClass("dn");
 })
 
 

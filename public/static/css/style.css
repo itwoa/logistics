@@ -17,9 +17,16 @@ button,select,textarea{outline:none}
 .logo .fa-bars{cursor: pointer;padding-left: 15px;}
 .main_box .header .right{float: right;text-align: right;position: relative;}
 .main_box .header .right .fa-bell{width: 14px;height: 14px;display: inline-block;}
-.main_box .header .right .notice{display: inline-block;padding:0 15px;margin-right: -5px}
-.main_box .header .right .notice:hover{background: #42485b;color:#fff;}
+.main_box .header .right .notice{display: inline-block;margin-right: -5px;position: relative;cursor:pointer;}
+.main_box .header .right .notice .notice_list{display: none}
+.main_box .header .right .notice .head{padding:0 15px;}
+.main_box .header .right .notice .head:hover{background: #42485b;color:#fff;}
+.main_box .header .right .notice:hover .notice_list{display: block;}
 .main_box .header .right .notice .noc_box{font-size: 12px;background: #f90;color:#fff;border-radius: 5px;padding:3px 12px;margin-left:6px;cursor: pointer;}
+.main_box .header .right .notice .notice_list{position: absolute;width: 260px;height:300px;right:0;border:1px solid #ddd;background: #fff;border-top:1px solid #42485b;}
+.notice_list .title{text-align: left;padding-left: 10px;background: #eaedf1}
+.notice_list .notice_body li{height: 40px;border:1px solid red;}
+.notice_list .notice_body a{display: block;height: 20px;line-height: 20px;text-align: left;}
 .main_box .header .right .login_out{color:#3580e0;margin-left: 10px;}
 .main_box .header .right .login_out:hover{text-decoration: underline;}
 .main_box .header .right .user_name{display: inline-block;border-left: 1px solid #42485b}

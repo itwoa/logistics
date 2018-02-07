@@ -68,7 +68,7 @@ button,select,textarea{outline:none}
 .content table td .button.red{border:1px solid #f85847;color:#f85847;}
 .content table td .button.red:hover{background:#f85847;color:#fff;}
 /*灰色按钮*/
-.content table td .button.gray{border:1px solid #a09e9e;color:#fff;background:#a09e9e }
+.content table td .button.gray{border:1px solid #a09e9e;color:#a09e9e; }
 .content table td .button.gray:hover{cursor: not-allowed}
 /*绿色按钮*/
 .content table td .button.green{border:1px solid #00ae59;color:#00ae59; }

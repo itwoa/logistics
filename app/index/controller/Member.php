@@ -20,7 +20,7 @@ class Member extends Common
 	//管理员首页
     public function index(){
         $show = input('show')?:0;
-        
+
         $where = [];
         if($show == 0){
             $where['status'] = 1;
@@ -141,5 +141,25 @@ class Member extends Common
     	}
 
 
+    }
+
+    //更改账号状态
+    public function status(){
+        $id = input('id');
+        $status = input('status');
+
+        if($id == 1){
+            $this->error('总管理员不允许禁用！');
+        }
+
+        $status = $status == 0?1:0;
+
+        $res = db('admin')->where("id",$id)->setField("status",$status);
+
+        if($res){
+            $this->success('操作成功！');
+        }else{
+            $this->error('操作失败！');
+        }
     }
 }

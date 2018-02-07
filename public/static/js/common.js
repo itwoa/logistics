@@ -45,3 +45,7 @@ $("table #allcheck").on("click",function(){
 $(".checkbox i").on("click",function(){
     $(this).parent().toggleClass("checked");
 })
+
+$("input.checkbox").on("click",function(){
+    $(this).toggleClass("checked");
+})

@@ -110,5 +110,5 @@ form .input.wd400{width: 400px}
 .pagination li:hover a{color:#fff}
 
 /*模拟checkbox*/
-.checkbox i{width:16px;height:16px;background: url("../images/bee-icon.png") no-repeat -197px -90px;vertical-align: middle;cursor: pointer;display: inline-block;overflow: hidden;margin-top: -2px}
-.checkbox.checked i{background-position:-107px -171px; }
+.checkbox i,input.checkbox{width:16px;height:16px;background: url("../images/bee-icon.png") no-repeat -197px -90px;vertical-align: middle;cursor: pointer;display: inline-block;overflow: hidden;margin-top: -2px;-webkit-appearance: none;}
+.checkbox.checked i,input.checkbox.checked{background-position:-107px -171px; }

@@ -26,12 +26,13 @@ $(".left_nav a").on("click", function () {
     $(this).addClass('current');
     $(".content").find("iframe").hide().attr("src", url);
     $(this).parents('ul').prev('.nav_item').removeClass("current");
-    var index = layer.load();
-
-    $("#iframe").on('load', function () {
-        layer.close(index);
-        $(this).fadeIn();
-    })
+    if(url != 'javascript:;'){
+        var index = layer.load();
+        $("#iframe").on('load', function () {
+            layer.close(index);
+            $(this).fadeIn(10);
+        })
+    }
 });
 
 //切换显示

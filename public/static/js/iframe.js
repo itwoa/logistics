@@ -20,8 +20,8 @@ $(".left_nav .nav_item").on('click',function(){
 });
 
 //导航二级菜单
-$(".left_nav a").on("click", function () {
-    $(".left_nav a").removeClass('current');
+$(".left_nav a,.simple_nav a").on("click", function () {
+    $(".left_nav a,.simple_nav a").removeClass('current');
     var url = $(this).attr("href");
     $(this).addClass('current');
     $(".content").find("iframe").hide().attr("src", url);
@@ -38,13 +38,10 @@ $(".left_nav a").on("click", function () {
 //切换显示
 $(".logo .fa-bars").unbind().on("click",function(){
     $(this).toggleClass("show");
-    if($(this).hasClass('show')){
-        $(".left_nav").hide();
-        $(".main_box .content .iframe").css("marginLeft",0);
-    }else{
-        $(".left_nav").show();
-        $(".main_box .content .iframe").css("marginLeft",180);
-    }
+    $(".left_nav,.simple_nav").toggleClass('dn');
+    var left = $(this).hasClass('show')?40:180;
+    $(".main_box .content .iframe").css("marginLeft",left);
+
 });
 //管理控制台
 $("#control").on("click",function(){
@@ -53,7 +50,6 @@ $("#control").on("click",function(){
 });
 
 $(".user_name").off().hover(function(){
-
     $(".topbar").toggleClass("dn");
 })
 

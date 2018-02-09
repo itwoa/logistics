@@ -115,18 +115,7 @@
                 layer.closeAll();
             });
 
-            $(".simple_nav .nav_item").on('click',function(){
-                $('.nav_item').removeClass('current'); 
-                $(this).addClass('current');
-                $(this).next('ul').toggle(300).siblings('ul').hide();
-
-                if($("i",this).hasClass('fa-caret-down')){
-                    $("i",this).removeClass('fa-caret-down').addClass("fa-caret-right");
-                }else{
-                    $("i",this).removeClass('fa-caret-right').addClass("fa-caret-down");
-                }         
-                $(this).siblings(".nav_item").find("i").removeClass('fa-caret-down').addClass("fa-caret-right");
-            });
+            
              
         })
        

@@ -10,10 +10,10 @@ button,select,textarea{outline:none}
 .main_box a:hover{color:#2d93ca;}
 /*顶部样式*/
 .main_box .header{border-bottom:1px solid #42485b;height: 40px;line-height: 40px;position: relative;}
-.main_box .header .logo{font-size: 16px;width:200px;float: left;margin-left: 15px;}
+.main_box .header .logo{font-size: 16px;float: left;margin-left: 15px;}
 .main_box .header .logo i{display: inline-block;padding:0 15px;}
 .main_box .header .logo i:hover{color: #197bb1}
-.main_box .header .logo span{padding-left: 15px;display: inline-block;border-left: 1px solid #42485b;-ms-user-select:none;}
+.main_box .header .logo span{padding:0 15px;display: inline-block;border-left: 1px solid #42485b;-ms-user-select:none;}
 .logo .fa-bars{cursor: pointer;padding-left: 15px;}
 .main_box .header .right{float: right;text-align: right;position: relative;}
 .main_box .header .right .fa-bell{width: 14px;height: 14px;display: inline-block;}

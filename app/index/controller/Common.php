@@ -27,11 +27,12 @@ class Common extends Controller
                 $this->error('长时间未操作请重新登录', '/');
             }else{
                 echo "<script>alert('长时间未操作请重新登录');parent.window.location.href='/'</script>";
-                //exit;
+                exit;
             }
 
         }else {
             session('lasttime', time());
+            $this->assign('adminid',session('adminid'));
         }
 
     }

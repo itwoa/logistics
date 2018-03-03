@@ -25,16 +25,17 @@ class Home extends Common
     }
 
     public function sendMsg(){
-
-       
-        $to_uid = "";
-        
+        $time = date('m/d H:i',time());
+        $to_uid = "";    
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 
+        //$push_api_url =  $protocol.$_SERVER['HTTP_HOST'].":2121/";
         $push_api_url =  $protocol.$_SERVER['HTTP_HOST'].":2121/";
         $post_data = array(
            "type" => "publish",
-           "content" => "这个是推送的测试数据132",
+           "content" => "<p>办公室牛牛 ".$time." 发布了一条公告：<a class='see'>元宵节提前下班通知</a></p>",
+           "link" => url('notice/content',array('id'=>3)),
+           "msid" => 3,
            "to" => $to_uid, 
         );
         $ch = curl_init ();
@@ -46,7 +47,26 @@ class Home extends Common
         curl_setopt ($ch, CURLOPT_HTTPHEADER, array("Expect:"));
         $return = curl_exec ( $ch );
         curl_close ( $ch );
-        var_export($return);
+
+        switch ($return) {
+            case 1:
+                $msg = '推送成功！';
+                break;
+            case 2:
+                $msg = '用户已离线！';
+                break;
+            case 0:
+                $msg = '推送失败！';
+                break;
+            default:
+                $msg = '推送失败！';
+                break;   
+        }
+        
+        
+        //记录失败日志
+        //logs($msg.'-datas：'.json_encode($post_data),'workerman');
+        
     }
     
 }

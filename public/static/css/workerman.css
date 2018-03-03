@@ -2,8 +2,7 @@
 
 /*ul{list-style:none; margin:0px; padding:0px; margin-top:20px;}
 li{padding-bottom:20px;}*/
-.sticky p, .floated p, .fixed p, .ondemand p{ float:left; padding:0px; margin:0px; margin-left:10px; line-height:45px; color:#fff; font-size:12px;}
-.sticky a, .floated a, .fixed a, .ondemand a{ float:right; margin:0px; }
+
 img{border:0px;}
 .wrapper{padding:20px;}
 
@@ -17,6 +16,7 @@ z-index:1000;
 
 }
 .sticky .title{background: #42485b;color:#fff;padding:5px 10px;}
+.sticky .title a{float: right;}
 .sticky #content{
 	
 	border:1px solid #ddd;
@@ -26,8 +26,11 @@ z-index:1000;
 
 }
 .sticky #content .msg{margin:0 5px;min-height: 100px;border-bottom: 1px solid #ddd}
+.sticky #content .msg p{color:#000;}
+.sticky #content .msg p a.see{color:#F26C4F;cursor: pointer;}
+.sticky #content .msg p a.see:hover{color:#197bb1}
 .sticky .bottom{border:1px solid #ddd;border-top: 0;height: 30px;line-height: 30px;padding:0 10px}
-.sticky .bottom a{cursor: pointer;color:#F26C4F;display: inline-block;margin-left: 15px}
+.sticky .bottom a{cursor: pointer;color:#F26C4F;display: inline-block;margin-left: 15px;float: right;}
 .sticky .bottom a:hover{color:#197bb1}
 .floated {
 
@@ -207,34 +210,4 @@ background-color:#ea0202;
 .close
 {}
 
-.show{
 
-background: #CC0000; /* Old browsers */
-background: -moz-linear-gradient(top, #CC0000 0%, #CC0000 100%); /* FF3.6+ */
-
-
-/* FireFox 3.6 */
-	/* Safari4+, Chrome */
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#CC0000', endColorstr='#CC0000')";
-	-pie-background: linear-gradient(#CC0000, #CC0000 100%);
-	behavior: url(PIE.htc);
-	-moz-box-shadow: 1px 1px 7px #676767;
-	-webkit-box-shadow: 1px 1px 7px #676767;
-	box-shadow: 1px 1px 7px #676767;
-	height: 35px;
-	float: right;
-	width: 30px;
-	overflow:hidden;
-	/*margin-top: 0px !important;*/
-	margin-right: 10px !important;
-	text-align: center;
-	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #CC0000),color-stop(1, #CC0000));/* IE6,IE7 */
-	/* IE8 */
-	/* Firefox F3.5+ */
-	/* Safari3.0+, Chrome */
-	 /* Opera 10.5, IE 9.0 */
-	
-	
-	}
-
-.show img{margin-top:10px;}

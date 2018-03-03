@@ -27,7 +27,27 @@ function p($data){
     $str.='</pre>';
     echo $str;
 }
+/**
+ * 生成日志文件
+ * @param  [type] $msg       日志内容
+ * @param  string $sub       文件名别名
+ * @param  string $directory 目录文件
+ */
+function logs($msg,$sub='',$directory=''){
 
+		$dir = date("Ymd");//按日期命名目录
+		//日志目录
+		$dir = empty($directory) ? "logs/".$dir."/" :"logs/".$directory."/".$dir."/";
+		if(!is_dir($dir)){
+			mkdir($dir,07777,true);
+		}
+
+		$msg = "【".date("Y-m-d H:i:s")."】:".$msg;
+		$file_name = date("Ymd").$sub;
+		$fd = fopen($dir.$file_name.".log","a");
+		fwrite($fd, $msg."\r\n");
+		fclose($fd);
+}
 /**
  *  通过数组索引返回数组值
  */

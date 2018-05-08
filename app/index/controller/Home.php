@@ -11,8 +11,8 @@ class Home extends Common
     public function index()
     {
         $list = model('admin')->getUser();
- 
-      
+        echo model('User','logic')->test();
+        //print_r($list);
     	return view();
     }
 

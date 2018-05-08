@@ -123,55 +123,55 @@
     <script src="__JS__/socket.io.js"></script>
     <script src="__JS__/notify.js"></script>
     <script>
-    $(document).ready(function () {
+    // $(document).ready(function () {
        
-        var uid = "{$adminid}";
-        // 连接服务端
-        var socket = io('http://'+document.domain+':2120');
-        // 连接后登录
-        socket.on('connect', function(){
-            socket.emit('login', uid);
-            console.log( socket.emit('login', uid))
-        });
-        // 后端推送来消息时
-        socket.on('new_msg', function(msg){
-            //$("#content .msg").html(msg);
-            $("#content .msg").prepend(msg);
-            $('.notification.sticky').notify();
-        });
-        socket.on('link', function(msg){
-            $(".notification .bottom a.see").attr("href",msg);
-        });
-        socket.on('msid', function(msg){
-            $(".notification .bottom a.ignore").attr("data-id",msg);
-        });
-        socket.on('haslogin',function(msg){
-            console.log(234)
-        })
-        // 后端推送来在线数据时
-        socket.on('update_online_count', function(online_stat){
-            console.log(online_stat);
-            $('#online_box').html(online_stat);
-        });
-        //关闭提示窗
-        $("a.see,a.close").on("click",function(){
-            $(this).parents(".sticky").addClass('hide');
-            $("#content .msg").html('');
-        });
-        //忽略提示
-        $("a.ignore").on("click",function(){
-            $(this).parents(".sticky").addClass('hide');
-            $("#content .msg").html('');
-            //ajax提交数据
-            var msid = $(this).data('id');
-            console.log(msid);
-        });
-        //点击阅读删除记录
-        $(".sticky ").on('click','a.see',function(){
-            $(this).parent().remove();
-            if($.trim($(".sticky #content .msg").html()) == "") $(".sticky").addClass('hide');
-        })
-    });
+    //     var uid = "{$adminid}";
+    //     // 连接服务端
+    //     var socket = io('http://'+document.domain+':2120');
+    //     // 连接后登录
+    //     socket.on('connect', function(){
+    //         socket.emit('login', uid);
+    //         console.log( socket.emit('login', uid))
+    //     });
+    //     // 后端推送来消息时
+    //     socket.on('new_msg', function(msg){
+    //         //$("#content .msg").html(msg);
+    //         $("#content .msg").prepend(msg);
+    //         $('.notification.sticky').notify();
+    //     });
+    //     socket.on('link', function(msg){
+    //         $(".notification .bottom a.see").attr("href",msg);
+    //     });
+    //     socket.on('msid', function(msg){
+    //         $(".notification .bottom a.ignore").attr("data-id",msg);
+    //     });
+    //     socket.on('haslogin',function(msg){
+    //         console.log(234)
+    //     })
+    //     // 后端推送来在线数据时
+    //     socket.on('update_online_count', function(online_stat){
+    //         console.log(online_stat);
+    //         $('#online_box').html(online_stat);
+    //     });
+    //     //关闭提示窗
+    //     $("a.see,a.close").on("click",function(){
+    //         $(this).parents(".sticky").addClass('hide');
+    //         $("#content .msg").html('');
+    //     });
+    //     //忽略提示
+    //     $("a.ignore").on("click",function(){
+    //         $(this).parents(".sticky").addClass('hide');
+    //         $("#content .msg").html('');
+    //         //ajax提交数据
+    //         var msid = $(this).data('id');
+    //         console.log(msid);
+    //     });
+    //     //点击阅读删除记录
+    //     $(".sticky ").on('click','a.see',function(){
+    //         $(this).parent().remove();
+    //         if($.trim($(".sticky #content .msg").html()) == "") $(".sticky").addClass('hide');
+    //     })
+    // });
 </script>
 </body>
 </html>

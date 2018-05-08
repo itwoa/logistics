@@ -1,12 +1,11 @@
 <?php
-namespace app\index\model;
-
+namespace app\common\logic;
 use think\Model;
 
 class User extends Model
 {
 	public function test(){
-		echo "model";
+		echo "common logic model";
 	}
 }
 
